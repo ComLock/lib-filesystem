@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.enonic.xp:core-api:6.9.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.enonic.xp/core-api/6.9.0/f0e00b0c33c3df086e5d1cc99110599bac6c54df/core-api-6.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.enonic.xp/core-api/6.9.0/69e31c445d02113687ee20dcca0e97aacafa15c7/core-api-6.9.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

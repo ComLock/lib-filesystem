@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.enonic.xp:script-api:6.9.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.enonic.xp/script-api/6.9.0/e93142c5aebf624b02c79c1c917c86c4474c42bb/script-api-6.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.enonic.xp/script-api/6.9.0/ad994a14a5e06d00796dacc8466536dde9ca507c/script-api-6.9.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

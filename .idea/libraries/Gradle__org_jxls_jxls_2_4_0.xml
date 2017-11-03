@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jxls:jxls:2.4.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jxls/jxls/2.4.0/7c548121b5aadf97ab5b24cf52bdc1d2cb37bd28/jxls-2.4.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jxls/jxls/2.4.0/6c31ba9d971e8cffa300cad7e297e3b1211ad043/jxls-2.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

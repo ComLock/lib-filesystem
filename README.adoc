@@ -1,0 +1,159 @@
+= lib-filesystem
+
+image::https://img.shields.io/badge/xp-6.+-blue.svg[role="right"]
+
+
+A small library for reading, deleting, moving, writing a file on the
+File System,
+
+[[usage]]
+Usage
+~~~~~
+
+To ``install'' this library you need to update your build.gradle file.
+
+[[gradle-build-script]]
+Gradle build script
+^^^^^^^^^^^^^^^^^^^
+
+[[enonic-xp-version-6.12]]
+Enonic XP version >=6.12
+++++++++++++++++++++++++
+
+....
+dependencies {
+    include 'no.rbrastad.enonic.lib:filesystem:0.9.0'
+}
+....
+
+[[enonic-xp-version-6.11]]
+Enonic XP version <=6.11
+++++++++++++++++++++++++
+
+....
+repositories {
+    maven {
+      url 'https://dl.bintray.com/rbrastad/enonic'
+    }
+}
+
+dependencies {
+     include 'no.rbrastad.enonic.lib:filesystem:0.9.0'
+}
+....
+
+[[documentation]]
+Documentation
+~~~~~~~~~~~~~
+
+You can then use this inside your javascript controller or other parts
+of your app.
+
+[source,javascript]
+----
+// Include the library
+var fsLib = require("/lib/rbrastad/file-system");
+
+// ____readFile ____
+// Get file.
+var file = fsLib.readFile( fileAbsolutePathName );
+
+// ____ exists ____
+// Check if file exists
+var exists = file.exists;
+
+// ____ isFile ____
+// Check if path is a file
+var isFile = file.isFile;
+
+// ____ isDirectory ____
+// Check if path is a directory
+var isDirectory = file.isDirectory;
+
+// ____ isHidden ____
+// Check if file is hidden
+var isHidden = file.isHidden;
+
+// ____ lastModified ____
+// file lastModified date
+var lastModified = file.lastModified;
+
+// ____ absolutePath ____
+// file absolutePath
+var absolutePath = file.absolutePath;
+
+// ____ length ____
+// file length
+var length = file.length;
+
+// ____ deleted ____
+//  deleted= if file is deleted or not
+var deleted = fsLib.deleteIfExists( fileAbsolutePathName );
+
+// ____ filesInDirectory ___
+// files = array of file objects
+var files = fsLib.filesInDirectory( path );
+
+// ____ moveFile ___
+// moved = is the file moved or not. (true || false)
+var moved = fsLib.move( fileAbsolutePathNameFrom, fileAbsolutePathNameTo );
+
+// ____ write ___
+// created = file is created from a stream ( use io lib )
+var created =  fsLib.write(fileAbsolutePathNameTo, ioLib.newStream('Hello World'));
+
+----
+
+File JSON object response example
+
+[source,javascript]
+----
+{
+  "exists": true,
+  "name": "myfile.txt",
+  "absolutePath": "/home/rbrastad/Desktop/myfile.txt",
+  "length": 3946,
+  "lastModified": 1508227954000,
+  "isDirectory": false,
+  "isHidden": false,
+  "isFile": true
+}
+
+----
+
+Example code usage:
+
+[source,javascript]
+----
+
+// Include the library
+var fsLib = require("/lib/rbrastad/file-system");
+
+// Set and get fileSource by path
+var file = fsLib.readFile( "<MY_FILE>" );
+
+if( file.exists ){
+     if( file.isFile ){
+         // file functions
+         file.exists; // file exists. true or false
+         file.name; // name of files
+         file.absolutePath; // absolute path
+         file.length; // length of file in bytes
+         file.isFile; // is path a file
+         file.isDirectory; // is path a directory
+         file.isHidden; // is file hidden
+         file.lastModified; // lastModified
+
+     }
+ }
+
+
+----
+
+Example streaming a file to the browser as a service
+
+```javascript
+
+....
+var fsLib = require("/lib/rbrastad/file-system");
+....

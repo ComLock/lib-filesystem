@@ -1,0 +1,82 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven {
+            url 'http://repo.enonic.com/public'
+        }
+    }
+
+    dependencies {
+        classpath "com.enonic.xp:gradle-plugin:${xpVersion}"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'com.enonic.gradle:gradle-defaults:1.0.1'
+    }
+}
+
+apply plugin: 'maven'
+apply plugin: 'com.enonic.xp.app'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+
+app {
+    name = project.appName
+    displayName = project.displayName
+    vendorName = 'RBrastad'
+    vendorUrl = 'https://rbrastad.no'
+}
+
+dependencies {
+    compile "com.enonic.xp:core-api:${xpVersion}"
+    compile "com.enonic.xp:portal-api:${xpVersion}"
+    compile "com.google.guava:guava:18.0"
+    compile "com.enonic.lib:text-encoding:1.1.0"
+
+    testCompile "com.enonic.xp:lib-io:${xpVersion}"
+    testCompile 'junit:junit:4.12'
+    testCompile "com.enonic.xp:testing:${xpVersion}"
+
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    maven {
+        url 'http://repo.enonic.com/public'
+    }
+    maven {
+        url 'https://dl.bintray.com/rbrastad/enonic'
+    }
+}
+
+bintray {
+    user = "$bintrayUser"
+    key = "$bintrayApiKey"
+    publish = true
+    pkg {
+        repo = 'enonic'
+        name = project.appName
+        userOrg = 'rbrastad'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/rbrastad/lib-filesystem'
+        githubReleaseNotesFile = 'README.md'
+        githubRepo = 'rbrastad/lib-filesystem'
+
+        version {
+            name = project.version
+            released = new Date()
+            configurations = ['archives']
+        }
+    }
+}
+
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
