@@ -2,7 +2,6 @@
 
 image::https://img.shields.io/badge/xp-6.+-blue.svg[role="right"]
 
-
 A small library for reading, deleting, moving, writing a file on the
 File System,
 
