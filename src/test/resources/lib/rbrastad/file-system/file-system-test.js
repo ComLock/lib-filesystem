@@ -72,3 +72,14 @@ function getTestFileSourceContentCharsetDecode() {
 
     assert.assertJsonEquals( fileContent , JSON.parse( content ) );
 }
+
+
+
+function readTestisFile() {
+    var fileSourceResponse = fsLib.readFile( fileSource.name );
+    log.info("readFile: %s" , JSON.stringify( fileSource, null,2 ) );
+
+    assert.assertJsonEquals( fileSource , fileSourceResponse);
+}
+
+
