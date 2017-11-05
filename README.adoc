@@ -163,7 +163,7 @@ Example looping files in directory
  var files = fsLib.filesInDirectory( filesTmpTestDirectory );
     files.forEach( function( file ){
 
-        log.info( "post result: %s", JSON.stringify( file, null, 2 ) );
+        log.info( "file result: %s", JSON.stringify( file, null, 2 ) );
     });
 
 
