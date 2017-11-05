@@ -155,6 +155,20 @@ if( file.exists ){
 
 ----
 
+Example looping files in directory
+[source,javascript]
+----
+
+
+ var files = fsLib.filesInDirectory( filesTmpTestDirectory );
+    files.forEach( function( file ){
+
+        log.info( "post result: %s", JSON.stringify( file, null, 2 ) );
+    });
+
+
+----
+
 Example streaming a file to the browser as a service
 [source,javascript]
 ----
