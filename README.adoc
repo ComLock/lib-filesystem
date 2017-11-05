@@ -110,7 +110,6 @@ var content = fsLib.getContentCharsetDecoded(  fileSource );
 // encoding = default value is UTF-8
 var content = fsLib.getContentCharsetDecoded(  fileSource, encoding );
 
-
 // ____ deleted ____
 //  deleted= if file is deleted or not
 var deleted = fsLib.deleteIfExists( fileAbsolutePathName );
@@ -172,7 +171,6 @@ if( file.exists ){
          file.isDirectory; // is path a directory
          file.isHidden; // is file hidden
          file.lastModified; // lastModified
-
      }
  }
 
@@ -186,7 +184,6 @@ Example looping files in directory
 
  var files = fsLib.filesInDirectory( filesTmpTestDirectory );
  files.forEach( function( file ){
-
         log.info( "file result: %s", JSON.stringify( file, null, 2 ) );
     });
 
