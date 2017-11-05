@@ -87,7 +87,7 @@ var absolutePath = file.absolutePath;
 var length = file.length;
 
 // ____ content ____
-// content = content of files in bytes
+// content = content of file in bytes
 var content = fsLib.getContent(  fileSource );
 
 // ____ content ____
@@ -100,6 +100,10 @@ var content = fsLib.getContent(  fileSource, charsetDecode );
 // charsetDecode = decode bytes true/false
 // encoding = default value is UTF-8
 var content = fsLib.getContent(  fileSource, charsetDecode, encoding );
+
+// ____ contentCharsetDecoded ____
+// content = content of file charset decoded
+var content = fsLib.getContentCharsetDecoded(  fileSource );
 
 // ____ deleted ____
 //  deleted= if file is deleted or not
