@@ -156,12 +156,12 @@ function loopFilesInDir(){
 
 function deleteIfExistsTest() {
     var deleted =  fsLib.deleteIfExists( fileNewName  );
-    assert.assertEquals( true, true );
+    assert.assertEquals( true, deleted );
 }
 
 
 function deleteIfExistsDirTest() {
     var deleted =  fsLib.deleteIfExists( filesTmpTestDirectory  );
-    assert.assertEquals( true, true );
+    assert.assertEquals( true, deleted );
 }
 
