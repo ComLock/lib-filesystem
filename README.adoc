@@ -86,6 +86,11 @@ var absolutePath = file.absolutePath;
 // file length
 var length = file.length;
 
+// ____ content ____
+// content of file
+// fileSource = A file reference from using readFile or {absolutePath: <ASOLUTEPATHNAME> });
+var bytes = var fileContent = fsLib.getContent( fileSource );
+
 // ____ deleted ____
 //  deleted= if file is deleted or not
 var deleted = fsLib.deleteIfExists( fileAbsolutePathName );
@@ -169,7 +174,7 @@ function handleRequest( req ) {
     if(file.exists){
         // Stream the file content to the client
         return {
-            body:  fsLib.getSource( file ),
+            body:  fsLib.getContent( file ),
             headers : {
                 "Content-Disposition": 'attachment; filename="' + file.name + '""'
             }
