@@ -3,8 +3,8 @@
 image::https://img.shields.io/badge/xp-6.+-blue.svg[role="right"]
 image::https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg[role="right"]
 
-A small library for reading, deleting, moving, writing a file on the
-File System,
+A library for reading, deleting, moving, writing a file on the
+File System usin Enonic XP.
 
 [[usage]]
 Usage
