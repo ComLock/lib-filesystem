@@ -188,12 +188,6 @@ Example streaming a file to the browser as a service
 ----
 
 
-
-<<<<<<< HEAD
-    ....
-    var fsLib = require("/lib/rbrastad/file-system");
-    ....
-=======
 var fsLib = require("/lib/rbrastad/file-system");
 
 function handleRequest( req ) {
@@ -225,4 +219,3 @@ exports.get = handleRequest;
 
 
 ----
->>>>>>> cb4569bea658fdcc0c325b69e395ea290e64eeff
