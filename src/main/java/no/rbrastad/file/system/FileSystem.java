@@ -122,13 +122,14 @@ public class FileSystem {
         return java.nio.file.Files.deleteIfExists(  getFilePath(filePathAndName) );
     }
 
-    public boolean move(String sourceFilePathAndName, String targetFilePathAndName ) throws IOException{
+    public FileSource move(String sourceFilePathAndName, String targetFilePathAndName ) throws IOException{
         try {
             java.nio.file.Files.move(getFilePath(sourceFilePathAndName), Paths.get(targetFilePathAndName));
-            return true;
+
+            return readFile( targetFilePathAndName );
         }catch (NoSuchFileException e){
             e.printStackTrace();
-            return false;
+            return new FileSource();
         }
     }
 
