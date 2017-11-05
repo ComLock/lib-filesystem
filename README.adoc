@@ -151,9 +151,39 @@ if( file.exists ){
 ----
 
 Example streaming a file to the browser as a service
+[source,javascript]
+----
 
-```javascript
 
-....
+
 var fsLib = require("/lib/rbrastad/file-system");
-....
+
+function handleRequest( req ) {
+
+    //Get the file path from the request
+    // !!! Never do this in PRODUCTION it will expose the server and cause serious problems...
+    // EXAMPLE: http://localhost:8080/_/service/no.rbrastad.enonic.lib.file.system.example/file?path=/home/rbrastad/Pictures/2016/07/04/DSCN0498.JPG
+    var fileAbsolutePathName = req.params.path
+
+    var file = fsLib.readFile( fileAbsolutePathName );
+    if(file.exists){
+        // Stream the file content to the client
+        return {
+            body:  fsLib.getSource( file ),
+            headers : {
+                "Content-Disposition": 'attachment; filename="' + file.name + '""'
+            }
+        };
+    }else{
+        return {
+            status : 404,
+            body: file
+        };
+    }
+
+};
+
+exports.get = handleRequest;
+
+
+----
