@@ -51,6 +51,16 @@ exports.exists = function() {
     }
 };
 
+exports.mkDir = function( newDirectory ) {
+    try{
+        return __.toNativeObject( fileSystemBean.mkDir( newDirectory ) );
+    }catch (e){
+        log.error(e);
+        return e;
+    }
+};
+
+
 
 exports.lastModified = function() {
     try{
@@ -128,7 +138,8 @@ exports.deleteIfExists = function( filePath ) {
 
 exports.move = function( sourceFilePathAndName, targetFilePathAndName ) {
     try {
-        return __.toNativeObject(fileSystemBean.move(sourceFilePathAndName, targetFilePathAndName));
+        fileSystemBean.move(sourceFilePathAndName, targetFilePathAndName);
+        return exports.readFile( targetFilePathAndName );
     }catch (e){
         log.error(e);
         return e;

@@ -64,6 +64,20 @@ public class FileSystem {
         return fileSource;
     }
 
+    public boolean mkDir( String newDirectory ){
+        try {
+            File directory = new File(newDirectory);
+            if (!directory.exists()) {
+               return directory.mkdirs();
+            }else{
+                return true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean isFile(){
         return ( exists() && file.isFile() ) ? true : false;
     }
@@ -124,9 +138,9 @@ public class FileSystem {
 
     public FileSource move(String sourceFilePathAndName, String targetFilePathAndName ) throws IOException{
         try {
-            java.nio.file.Files.move(getFilePath(sourceFilePathAndName), Paths.get(targetFilePathAndName));
+            Path movedFile = java.nio.file.Files.move(getFilePath(sourceFilePathAndName), Paths.get(targetFilePathAndName));
 
-            return readFile( targetFilePathAndName );
+            return readFile( movedFile.toAbsolutePath().normalize().toString() );
         }catch (NoSuchFileException e){
             e.printStackTrace();
             return new FileSource();

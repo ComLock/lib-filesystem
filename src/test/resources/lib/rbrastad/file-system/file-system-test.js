@@ -1,7 +1,8 @@
 var assert = require("/lib/xp/assert");
 var fsLib = require("/lib/rbrastad/file-system");
 var ioLib = require("/lib/xp/io");
-var encodingLib = require("/lib/text-encoding");
+var textEncodingLib = require("/lib/text-encoding");
+
 
 var fileContent = {
   name: "name"
@@ -16,9 +17,8 @@ var fileSource = {
   isHidden: false
 };
 
-var newName = "TestFileSystemMoved.json";
-
 exports.test = function() {
+  mkDir();
   writeTestFile();
   readTestFile();
   getTestFileSourceContent();
@@ -29,11 +29,26 @@ exports.test = function() {
   existsTest();
   lengthTest();
   moveTest();
+  loopFilesInDir();
+  deleteIfExistsTest();
+  deleteIfExistsDirTest();
 };
+
+var filesTmpTestDirectory = "build/tmpTest/";
+var fileNewName = filesTmpTestDirectory + "TestFileSystemMoved.json";
+var fileName = filesTmpTestDirectory + fileSource.name;
+
+
+function mkDir() {
+    var created =fsLib.mkDir( filesTmpTestDirectory );
+
+    assert.assertEquals( true , created);
+}
+
 
 function writeTestFile() {
   var created = fsLib.writeFile(
-    fileSource.name,
+    fileName,
     ioLib.newStream(JSON.stringify(fileContent))
   );
 
@@ -44,7 +59,7 @@ function writeTestFile() {
 }
 
 function readTestFile() {
-  var fileSourceResponse = fsLib.readFile(fileSource.name);
+  var fileSourceResponse = fsLib.readFile( fileName );
 
   delete fileSourceResponse.absolutePath;
   delete fileSourceResponse.lastModified;
@@ -54,10 +69,10 @@ function readTestFile() {
 
 function getTestFileSourceContent() {
   var fileSourceResponse = fsLib.getContent({
-    absolutePath: fileSource.name
+    absolutePath: fileName
   });
 
-  var content = encodingLib.charsetDecode(fileSourceResponse, "UTF-8");
+  var content = textEncodingLib.charsetDecode(fileSourceResponse, "UTF-8");
 
   assert.assertJsonEquals(fileContent, JSON.parse(content));
 }
@@ -66,7 +81,7 @@ function getTestFileSourceContentCharsetDecode() {
   var charsetDecode = true;
   var content = fsLib.getContent(
     {
-      absolutePath: fileSource.name
+      absolutePath: fileName
     },
     charsetDecode
   );
@@ -75,64 +90,73 @@ function getTestFileSourceContentCharsetDecode() {
 }
 
 function isFileTest() {
-  var fileSourceResponse = fsLib.readFile(fileSource.name);
+  var fileSourceResponse = fsLib.readFile(fileName);
 
   assert.assertEquals(true, fileSourceResponse.isFile);
 }
 
 function isDirectoryTest() {
-  var fileSourceResponse = fsLib.readFile(fileSource.name);
+  var fileSourceResponse = fsLib.readFile(fileName);
 
   assert.assertEquals(false, fileSourceResponse.isDirectory);
 }
 
 function isHiddenTest() {
-  var fileSourceResponse = fsLib.readFile(fileSource.name);
+  var fileSourceResponse = fsLib.readFile(fileName);
 
   assert.assertEquals(false, fileSourceResponse.isHidden);
 }
 
 function existsTest() {
-  var fileSourceResponse = fsLib.readFile(fileSource.name);
+  var fileSourceResponse = fsLib.readFile(fileName);
 
   assert.assertEquals(true, fileSourceResponse.exists);
 }
 
 function existsTest() {
-  var fileSourceResponse = fsLib.readFile(fileSource.name);
+  var fileSourceResponse = fsLib.readFile(fileName);
 
   assert.assertEquals(true, fileSourceResponse.exists);
 }
 
 function lengthTest() {
-  var fileSourceResponse = fsLib.readFile(fileSource.name);
+  var fileSourceResponse = fsLib.readFile(fileName);
 
   assert.assertEquals(fileSource.length, fileSourceResponse.length);
 }
 
 function moveTest() {
-    var fileSourceResponse = fsLib.readFile(fileSource.name);
+    var fileSourceResponse = fsLib.readFile(fileName);
 
-    fileSourceResponse = fsLib.move(fileSourceResponse.name, newName);
+    var movedFileSourceResponse = fsLib.move(fileSourceResponse.absolutePath, fileNewName);
+    var contentEncoded = fsLib.getContent( movedFileSourceResponse );
+    var content = textEncodingLib.charsetDecode(contentEncoded, "UTF-8");
 
-    var fileContent = fsLib.getContent({
-        absolutePath: fileSourceResponse.name
+    assert.assertJsonEquals( fileContent , JSON.parse( content ) );
+}
+
+
+function loopFilesInDir(){
+    var files = fsLib.filesInDirectory( filesTmpTestDirectory );
+    files.forEach( function( file ){
+        var exists = false;
+        if(file){
+            exists = true;
+        }
+
+        assert.assertEquals( true, exists );
     });
-
-    var content = encodingLib.charsetDecode(fileContent, "UTF-8");
-
-    log.info( content)
-
-   // assert.assertJsonEquals(fileContent, JSON.parse( content ));
 }
 
 
 function deleteIfExistsTest() {
-    var fileSourceResponse = fsLib.readFile(fileSource.name);
-
-    fsLib.deleteIfExists( fileSource.name  );
-
-    assert.assertEquals(fileSource.length, fileSourceResponse.length);
+    var deleted =  fsLib.deleteIfExists( fileNewName  );
+    assert.assertEquals( true, true );
 }
 
+
+function deleteIfExistsDirTest() {
+    var deleted =  fsLib.deleteIfExists( filesTmpTestDirectory  );
+    assert.assertEquals( true, true );
+}
 
