@@ -105,6 +105,12 @@ var content = fsLib.getContent(  fileSource, charsetDecode, encoding );
 // content = content of file charset decoded
 var content = fsLib.getContentCharsetDecoded(  fileSource );
 
+// ____ contentCharsetDecoded ____
+// content = content of file charset decoded
+// encoding = default value is UTF-8
+var content = fsLib.getContentCharsetDecoded(  fileSource, encoding );
+
+
 // ____ deleted ____
 //  deleted= if file is deleted or not
 var deleted = fsLib.deleteIfExists( fileAbsolutePathName );
