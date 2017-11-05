@@ -3,8 +3,8 @@
 image::https://img.shields.io/badge/xp-6.+-blue.svg[role="right"]
 image::https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg[role="right"]
 
-A small library for reading, deleting, moving, writing a file on the
-File System,
+A library for reading, deleting, moving, writing a file on the
+File System usin Enonic XP.
 
 [[usage]]
 Usage
@@ -169,10 +169,60 @@ if( file.exists ){
 
 ----
 
+Example looping files in directory
+[source,javascript]
+----
+
+
+ var files = fsLib.filesInDirectory( filesTmpTestDirectory );
+ files.forEach( function( file ){
+
+        log.info( "file result: %s", JSON.stringify( file, null, 2 ) );
+    });
+
+
+----
+
 Example streaming a file to the browser as a service
+[source,javascript]
+----
 
-```javascript
 
+
+<<<<<<< HEAD
     ....
     var fsLib = require("/lib/rbrastad/file-system");
     ....
+=======
+var fsLib = require("/lib/rbrastad/file-system");
+
+function handleRequest( req ) {
+
+    //Get the file path from the request
+    // !!! Never do this in PRODUCTION it will expose the server and cause serious problems...
+    // EXAMPLE: http://localhost:8080/_/service/no.rbrastad.enonic.lib.file.system.example/file?path=/home/rbrastad/Pictures/2016/07/04/DSCN0498.JPG
+    var fileAbsolutePathName = req.params.path
+
+    var file = fsLib.readFile( fileAbsolutePathName );
+    if(file.exists){
+        // Stream the file content to the client
+        return {
+            body:  fsLib.getContent( file ),
+            headers : {
+                "Content-Disposition": 'attachment; filename="' + file.name + '""'
+            }
+        };
+    }else{
+        return {
+            status : 404,
+            body: file
+        };
+    }
+
+};
+
+exports.get = handleRequest;
+
+
+----
+>>>>>>> cb4569bea658fdcc0c325b69e395ea290e64eeff
