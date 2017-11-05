@@ -110,6 +110,17 @@ exports.getContent = function( fileSource, charsetDecode, encoding ) {
     }
 };
 
+
+exports.getContentCharsetDecoded = function( fileSource, encoding) {
+    try{
+        return exports.getContent(fileSource, true, encoding );
+    }catch (e){
+        log.error(e);
+        return e;
+    }
+};
+
+
 exports.filesInDirectory = function( filePath ) {
     try{
         if(filePath == undefined)

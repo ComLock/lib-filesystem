@@ -23,6 +23,7 @@ exports.test = function() {
   readTestFile();
   getTestFileSourceContent();
   getTestFileSourceContentCharsetDecode();
+  getTestFileSourceContentCharsetDecoded();
   isFileTest();
   isDirectoryTest();
   isHiddenTest();
@@ -77,6 +78,16 @@ function getTestFileSourceContent() {
   assert.assertJsonEquals(fileContent, JSON.parse(content));
 }
 
+
+function getTestFileSourceContentCharsetDecoded() {
+    var content = fsLib.getContentCharsetDecoded({
+        absolutePath: fileName
+    });
+
+    assert.assertJsonEquals(fileContent, JSON.parse(content));
+}
+
+
 function getTestFileSourceContentCharsetDecode() {
   var charsetDecode = true;
   var content = fsLib.getContent(
@@ -105,12 +116,6 @@ function isHiddenTest() {
   var fileSourceResponse = fsLib.readFile(fileName);
 
   assert.assertEquals(false, fileSourceResponse.isHidden);
-}
-
-function existsTest() {
-  var fileSourceResponse = fsLib.readFile(fileName);
-
-  assert.assertEquals(true, fileSourceResponse.exists);
 }
 
 function existsTest() {
