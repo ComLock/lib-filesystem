@@ -22,7 +22,7 @@ Enonic XP version >=6.12
 
 ....
 dependencies {
-    include 'no.rbrastad.enonic.lib:filesystem:0.9.0'
+    include 'no.rbrastad.enonic.lib:filesystem:0.9.5'
 }
 ....
 
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-     include 'no.rbrastad.enonic.lib:filesystem:0.9.0'
+     include 'no.rbrastad.enonic.lib:filesystem:0.9.5'
 }
 ....
 
@@ -226,3 +226,5 @@ exports.get = handleRequest;
 
 
 ----
+
+See test cases for other examples: https://github.com/rbrastad/lib-filesystem/blob/master/src/test/resources/lib/rbrastad/file-system/file-system-test.js[]
