@@ -1,5 +1,5 @@
 var assert = require("/lib/xp/assert");
-var fsLib = require("/lib/rbrastad/file-system");
+var fsLib = require("/lib/openxp/file-system");
 var ioLib = require("/lib/xp/io");
 var textEncodingLib = require("/lib/text-encoding");
 

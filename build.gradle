@@ -59,11 +59,9 @@ bintray {
     pkg {
         repo = 'enonic'
         name = project.appName
-        userOrg = 'rbrastad'
-        licenses = ['MIT']
+        userOrg = 'openxp'
+        licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/rbrastad/lib-filesystem'
-        githubReleaseNotesFile = 'README.md'
-        githubRepo = 'rbrastad/lib-filesystem'
 
         version {
             name = project.version

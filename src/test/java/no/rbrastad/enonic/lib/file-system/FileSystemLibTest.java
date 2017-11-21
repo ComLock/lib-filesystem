@@ -8,6 +8,6 @@ public class FileSystemLibTest
     @Override
     public String getScriptTestFile()
     {
-        return "/lib/rbrastad/file-system/file-system-test.js";
+        return "/lib/openxp/file-system/file-system-test.js";
     }
 }
