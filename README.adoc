@@ -155,7 +155,7 @@ Example code usage:
 ----
 
 // Include the library
-var fsLib = require("/lib/rbrastad/file-system");
+var fsLib = require("/lib/openxp/file-system");
 
 // Set and get fileSource by path
 var file = fsLib.readFile( "<MY_FILE>" );
@@ -195,7 +195,7 @@ Example streaming a file to the browser as a service
 ----
 
 
-var fsLib = require("/lib/rbrastad/file-system");
+var fsLib = require("/lib/openxp/file-system");
 
 function handleRequest( req ) {
 

@@ -1,4 +1,4 @@
-package no.tine.enonic.lib.adal;
+package openxp.file.system;
 
 import com.enonic.xp.testing.script.ScriptRunnerSupport;
 

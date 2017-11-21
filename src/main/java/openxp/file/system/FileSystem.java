@@ -1,4 +1,4 @@
-package no.rbrastad.file.system;
+package openxp.file.system;
 
 import com.google.common.io.ByteSink;
 import com.google.common.io.ByteSource;

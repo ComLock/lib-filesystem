@@ -1,5 +1,5 @@
-var fileSystemBean =  __.newBean("no.rbrastad.file.system.FileSystem");
-var jsonUtilBean =  __.newBean("no.rbrastad.file.system.JSONUtil");
+var fileSystemBean =  __.newBean("openxp.file.system.FileSystem");
+var jsonUtilBean =  __.newBean("openxp.file.system.JSONUtil");
 var textEncodingLib = require('/lib/text-encoding');
 
 exports.readFile = function( filePathAndName ) {

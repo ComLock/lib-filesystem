@@ -1,4 +1,4 @@
-package no.rbrastad.file.system;
+package openxp.file.system;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
