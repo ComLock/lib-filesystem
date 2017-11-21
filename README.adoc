@@ -22,7 +22,7 @@ Enonic XP version >=6.12
 
 ....
 dependencies {
-    include 'no.rbrastad.enonic.lib:filesystem:0.9.5'
+    include 'openxp.lib:filesystem:0.9.5'
 }
 ....
 
@@ -33,12 +33,12 @@ Enonic XP version <=6.11
 ....
 repositories {
     maven {
-      url 'https://dl.bintray.com/rbrastad/enonic'
+      url 'https://dl.bintray.com/openxp/enonic'
     }
 }
 
 dependencies {
-     include 'no.rbrastad.enonic.lib:filesystem:0.9.5'
+     include 'openxp.lib:filesystem:0.9.5'
 }
 ....
 
