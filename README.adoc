@@ -3,14 +3,14 @@
 image::https://img.shields.io/badge/xp-6.+-blue.svg[role="right"]
 image::https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg[role="right"]
 
-A library for reading, deleting, moving, writing a file on the
-File System usin Enonic XP.
+A library for reading, deleting, moving and writing a file on the
+File System using Enonic XP.
 
 [[usage]]
 Usage
 ~~~~~
 
-To ``install'' this library you need to update your build.gradle file.
+To install this library you need to update your build.gradle file.
 
 [[gradle-build-script]]
 Gradle build script
