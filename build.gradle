@@ -47,9 +47,6 @@ repositories {
     maven {
         url 'http://repo.enonic.com/public'
     }
-    maven {
-        url 'https://dl.bintray.com/rbrastad/enonic'
-    }
 }
 
 bintray {
@@ -57,7 +54,7 @@ bintray {
     key = "$bintrayApiKey"
     publish = true
     pkg {
-        repo = 'enonic'
+        repo = 'public'
         name = project.appName
         userOrg = 'openxp'
         licenses = ['Apache-2.0']
