@@ -25,8 +25,8 @@ apply plugin: 'jacoco'
 app {
     name = project.appName
     displayName = project.displayName
-    vendorName = 'RBrastad'
-    vendorUrl = 'https://rbrastad.no'
+    vendorName = 'OpenXP'
+    vendorUrl = 'https://bitbucket.org/openxp'
 }
 
 dependencies {
