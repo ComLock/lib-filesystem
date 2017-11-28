@@ -188,4 +188,4 @@ Example streaming a file to the browser as a service
     exports.get = handleRequest;
 
 See test cases for other examples:
-<https://github.com/rbrastad/lib-filesystem/blob/master/src/test/resources/lib/rbrastad/file-system/file-system-test.js>
+<https://github.com/rbrastad/lib-filesystem/blob/master/src/test/resources/lib/openxp/file-system/file-system-test.js>

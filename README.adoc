@@ -227,4 +227,4 @@ exports.get = handleRequest;
 
 ----
 
-See test cases for other examples: https://github.com/rbrastad/lib-filesystem/blob/master/src/test/resources/lib/rbrastad/file-system/file-system-test.js[]
+See test cases for other examples: https://github.com/rbrastad/lib-filesystem/blob/master/src/test/resources/lib/openxp/file-system/file-system-test.js[]
