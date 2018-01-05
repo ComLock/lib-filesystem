@@ -11,14 +11,6 @@ To install this library you need to update your build.gradle file.
 Gradle build script
 -------------------
 
-### Enonic XP version >=6.12
-
-    dependencies {
-        include 'openxp.lib:filesystem:0.9.5'
-    }
-
-### Enonic XP version <=6.11
-
     repositories {
         maven {
           url 'https://dl.bintray.com/openxp/public'
