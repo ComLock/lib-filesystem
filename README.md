@@ -18,7 +18,7 @@ Gradle build script
     }
 
     dependencies {
-         include 'openxp.lib:filesystem:0.9.5'
+         include 'openxp.lib.filesystem:0.9.5'
     }
 
 Documentation
