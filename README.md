@@ -18,7 +18,7 @@ Gradle build script
     }
 
     dependencies {
-         include 'openxp.lib.filesystem:0.9.5'
+         include 'openxp.lib.filesystem:0.9.6'
     }
 
 Documentation
@@ -93,6 +93,10 @@ of your app.
     // ____ filesInDirectory ___
     // files = array of file objects
     var files = fsLib.filesInDirectory( path );
+
+    // ____ dirsInDirectory ___
+    // files = array of file objects
+    var dirs = fsLib.dirsInDirectory( path );
 
     // ____ moveFile ___
     // moved = is the file moved or not. (true || false)
