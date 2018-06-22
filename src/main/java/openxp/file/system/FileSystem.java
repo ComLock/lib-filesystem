@@ -114,6 +114,24 @@ public class FileSystem {
         file = new File(filePathAndName);
     }
 
+    public Iterator<FileSource> getDirsInDirectory(String filePath) throws IOException {
+        List<FileSource> dirs =  java.nio.file.Files.list( getFilePath(filePath) )
+                .filter(java.nio.file.Files::isDirectory)
+                .map( path -> {
+                    FileSource fileSource = new FileSource();
+
+                    fileSource.setExists(true);
+                    fileSource.isDirectory(true);
+                    fileSource.setName( path.getFileName().toString() );
+                    fileSource.setAbsolutePath( path.toAbsolutePath().toString() );
+
+                    return fileSource;
+                } )
+                .collect(Collectors.toList());
+
+        return dirs.iterator();
+    }
+
     public Iterator<FileSource> getFilesInDirectory(String filePath) throws IOException {
         List<FileSource> files =  java.nio.file.Files.list( getFilePath(filePath) )
                 .filter(java.nio.file.Files::isRegularFile)
