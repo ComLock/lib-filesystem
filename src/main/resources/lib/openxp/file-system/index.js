@@ -121,6 +121,20 @@ exports.getContentCharsetDecoded = function( fileSource, encoding) {
 };
 
 
+exports.dirsInDirectory = function( filePath ) {
+    try{
+        if(filePath == undefined)
+            filePath = null;
+
+        var dirs = __.toNativeObject( fileSystemBean.getDirsInDirectory( filePath ) );
+
+        return JSON.parse(  jsonUtilBean.toJson(dirs) );
+    }catch (e){
+        log.error(e);
+        return e;
+    }
+};
+
 exports.filesInDirectory = function( filePath ) {
     try{
         if(filePath == undefined)
