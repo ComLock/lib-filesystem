@@ -91,3 +91,8 @@ local.properties
 
 
 README.xml
+*.class
+bin*
+.classpath
+.project
+.settings*

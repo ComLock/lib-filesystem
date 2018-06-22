@@ -31,6 +31,7 @@ exports.test = function() {
   lengthTest();
   moveTest();
   loopFilesInDir();
+  getDirsInDirectory();
   deleteIfExistsTest();
   deleteIfExistsDirTest();
 };
@@ -154,6 +155,15 @@ function loopFilesInDir(){
 }
 
 
+function getDirsInDirectory(){
+  fsLib.mkDir( filesTmpTestDirectory + "dir1" );
+  fsLib.mkDir( filesTmpTestDirectory + "dir2" );
+ 
+  var dirs =  fsLib.dirsInDirectory(filesTmpTestDirectory);
+
+  assert.assertEquals(dirs.length, 2);
+}
+
 function deleteIfExistsTest() {
     var deleted =  fsLib.deleteIfExists( fileNewName  );
     assert.assertEquals( true, deleted );
@@ -161,7 +171,11 @@ function deleteIfExistsTest() {
 
 
 function deleteIfExistsDirTest() {
+    fsLib.deleteIfExists( filesTmpTestDirectory + "dir1" );
+    fsLib.deleteIfExists( filesTmpTestDirectory + "dir2" );
+  
     var deleted =  fsLib.deleteIfExists( filesTmpTestDirectory  );
     assert.assertEquals( true, deleted );
 }
+
 
