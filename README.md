@@ -1,10 +1,10 @@
+# lib-filesystem
+
 ---
 **Important build info**
 Existing builds with dependency from maven url https://dl.bintray.com/openxp/public will break as bintray services are deprecated on May 1st 2021. Fix this by replacing maven url with following https://openxp.jfrog.io/artifactory/public.
 
 ---
-
-#lib-filesystem
 
 A library for reading, deleting, moving and writing a file on the File
 System using Enonic XP.
