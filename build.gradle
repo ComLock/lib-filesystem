@@ -6,12 +6,6 @@ buildscript {
             url 'http://repo.enonic.com/public'
         }
     }
-
-    dependencies {
-        //classpath "com.enonic.xp:gradle-plugin:${xpVersion}"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-        //classpath 'com.enonic.gradle:gradle-defaults:1.0.1'
-    }
 }
 
 
@@ -20,6 +14,7 @@ plugins {
     id 'maven'
     id 'maven-publish'
     id 'com.enonic.xp.base' version '2.0.0'
+    id "com.jfrog.artifactory" version "4.21.0"
 }
 
 
@@ -32,7 +27,7 @@ dependencies {
     compile "com.enonic.xp:core-api:${xpVersion}"
     compile "com.enonic.xp:portal-api:${xpVersion}"
     compile "com.google.guava:guava:18.0"
-    compile "com.enonic.lib:lib-text-encoding:2.0.0-B1"
+    compile "com.enonic.lib:lib-text-encoding:2.0.0"
 
     testCompile "com.enonic.xp:lib-io:${xpVersion}"
     testCompile 'junit:junit:4.12'
@@ -51,27 +46,6 @@ wrapper {
 	distributionUrl = "${gradleDistributionUrl}"
 }
 
-
-/*bintray {
-    user = "$bintrayUser"
-    key = "$bintrayApiKey"
-    publish = true
-    pkg {
-        repo = 'public'
-        name = project.appName
-        userOrg = 'openxp'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/rbrastad/lib-filesystem'
-
-        version {
-            name = project.version
-            released = new Date()
-            configurations = ['archives']
-        }
-    }
-}*/
-
-
 jacocoTestReport {
     reports {
         xml.enabled = true
@@ -80,16 +54,19 @@ jacocoTestReport {
 }
 
 
-publishing {
-	publications {
-		mavenJava( MavenPublication ) {
-			from components.java
-		}
-	}
-	repositories {
-		maven {
-			//url 'http://repo.enonic.net/artifactory/public'
-			mavenLocal()
-		}
-	}
+// Publish with ./gradlew clean build artifactoryPublish 
+artifactory {
+    contextUrl = 'https://openxp.jfrog.io/artifactory'
+    publish {
+        repository {
+            repoKey = 'public'
+            username = "${artifactoryUser}"
+            password = "${artifactoryToken}"
+            maven = true
+
+        }       
+        defaults {
+            publications ('mavenJava')
+        }
+    }
 }
