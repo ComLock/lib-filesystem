@@ -1,43 +1,47 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven {
-            url 'http://repo.enonic.com/public'
-        }
-    }
-}
+// buildscript {
+//     repositories {
+//         mavenLocal()
+//         jcenter()
+//         maven {
+//             url 'http://repo.enonic.com/public'
+//         }
+//     }
+// }
 
 
 plugins {
     id 'java'
-    id 'maven'
+    // id 'maven'
     id 'maven-publish'
-    id 'com.enonic.xp.base' version '2.0.0'
-    id "com.jfrog.artifactory" version "4.21.0"
+    // id 'com.enonic.xp.base' version '2.0.0'
+    id 'com.enonic.xp.base' version '3.5.0'
+    // id "com.jfrog.artifactory" version "4.21.0"
 }
 
 
 //apply plugin: 'com.jfrog.bintray'
-apply plugin: 'idea'
-apply plugin: 'jacoco'
+// apply plugin: 'idea'
+// apply plugin: 'jacoco'
 
 
 dependencies {
-    compile "com.enonic.xp:core-api:${xpVersion}"
-    compile "com.enonic.xp:portal-api:${xpVersion}"
-    compile "com.google.guava:guava:18.0"
-    compile "com.enonic.lib:lib-text-encoding:2.0.0"
+    implementation "com.enonic.xp:core-api:${xpVersion}"
+    implementation "com.enonic.xp:portal-api:${xpVersion}"
+    implementation "com.google.guava:guava:18.0"
+    implementation "com.enonic.lib:lib-text-encoding:2.0.0"
 
-    testCompile "com.enonic.xp:lib-io:${xpVersion}"
-    testCompile 'junit:junit:4.12'
-    testCompile "com.enonic.xp:testing:${xpVersion}"
+    testImplementation "com.enonic.xp:testing:${xpVersion}"
+    // testImplementation 'org.mockito:mockito-core:5.13.0'
+    testImplementation "com.enonic.xp:lib-io:${xpVersion}"
+    // testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
 }
 
 
 repositories {
     mavenLocal()
-    jcenter()
+    mavenCentral()
+    // jcenter()
     xp.enonicRepo()
 }
 
@@ -46,27 +50,27 @@ wrapper {
 	distributionUrl = "${gradleDistributionUrl}"
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-}
+// jacocoTestReport {
+//     reports {
+//         xml.enabled = true
+//         html.enabled = true
+//     }
+// }
 
 
 // Publish with ./gradlew clean build artifactoryPublish 
-artifactory {
-    contextUrl = 'https://openxp.jfrog.io/artifactory'
-    publish {
-        repository {
-            repoKey = 'public'
-            username = "${artifactoryUser}"
-            password = "${artifactoryToken}"
-            maven = true
+// artifactory {
+//     contextUrl = 'https://openxp.jfrog.io/artifactory'
+//     publish {
+//         repository {
+//             repoKey = 'public'
+//             username = "${artifactoryUser}"
+//             password = "${artifactoryToken}"
+//             maven = true
 
-        }       
-        defaults {
-            publications ('mavenJava')
-        }
-    }
-}
+//         }       
+//         defaults {
+//             publications ('mavenJava')
+//         }
+//     }
+// }
