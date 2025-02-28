@@ -74,3 +74,14 @@ wrapper {
 //         }
 //     }
 // }
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = group
+            artifactId = 'filesystem'
+            version = version
+            from components.java
+        }
+    }
+}
